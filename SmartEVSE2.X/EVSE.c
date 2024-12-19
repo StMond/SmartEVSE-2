@@ -240,6 +240,7 @@ unsigned char RX1byte;
 unsigned char idx = 0, idx2 = 0, ISRFLAG = 0, ISR2FLAG = 0, ISRTXFLAG = 0, ISRTXLEN = 0;
 unsigned char menu = 0;
 unsigned int locktimer = 0, unlocktimer = 0;                                    // solenoid timers
+unsigned char timeout = 5;
 unsigned char lock1 = 0, lock2 = 1;
 unsigned char UnlockCable = 0, LockCable = 0;
 unsigned long Timer = 0;                                                        // mS counter
@@ -1512,7 +1513,9 @@ unsigned char setItemValue(unsigned char nav, unsigned int val) {
             }
             break;
         case STATUS_CURRENT:
-            OverrideCurrent = val;
+            if (LoadBl < 2) OverrideCurrent = val;
+            else Balanced[0] = val;
+            timeout = 10;                                                       // reset timeout when register is written
             break;
         case STATUS_SOLAR_TIMER:
             setSolarStopTimer(val);
@@ -2296,7 +2299,7 @@ void CMCheck(unsigned char Phases) {
 
 void main(void) {
     unsigned char x, leftbutton, RB2low = 0;
-    unsigned char pilot, count = 0, timeout = 5;
+    unsigned char pilot, count = 0;
     unsigned char ActivationTimer = 0, AccessTimer = 0;
     unsigned char Broadcast = 0, RB2count = 0, RB2last = 1;
     signed long CM[3]={0, 0, 0};
