@@ -1387,8 +1387,8 @@ unsigned char setItemValue(unsigned char nav, unsigned int val) {
             Config = val;
             break;
         case STATUS_MODE:
-            // Do not change Charge Mode when set to Normal or Load Balancing is disabled
-            if (Mode == 0 || LoadBl == 0) break;
+            // Do not change Charge Mode Load Balancing is disabled
+            if (LoadBl == 0) break;
         case MENU_MODE:
             Mode = val;
             break;
