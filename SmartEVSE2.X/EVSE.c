@@ -88,6 +88,29 @@
 ;           is presented (like a public charging station)
 ;       Allow custom meter FUNCTION config.
 ;       Added support for WAGO electric meter and SolarEdge Inverter in SunSpec mode.
+; 2.40  Mains meter phase detection
+;       Write number of used phases into the car
+;       Add high resultion font
+;       Visualize STATE_A (EV disconnected)
+;       WiFi option for Sensorbox 2
+;       Fix alignment of currents <= -100A
+;       Implement state B1 & C1
+;       Allow Smart/Solar switch on a node
+;       Increase external button bounce delay
+;       Try to broadcast communication error to Nodes
+;       Stabilize balancing, especially when charging on three phases
+;       Allow mode change within the menu of the master controller when nodes are active
+;       Increase SolarStopTimer when measurement is not finished
+;       Add Finder 7M.38.8.400.0212 electric meter
+;       On automatic Phase detection pause SolarStopTimer and print "DETECT" instead of the time
+;       Add CAPACITY menu option to limit max current draw on MAINS (sum of phases)
+;       Show number of phases detected with Mains electric meter on Node
+;       Delay with minimum current when start solar charging
+;       Dynamic decimal point on kWh information
+;       Allow ImportCurrent to be negative (for steady export)
+;       Allow StartCurrent to be negative
+;       Make StartCurrent per phase (for same behaviour on different cars)
+;       Stop solar charging only when over 6 A (per phase) more than StartCurrent is used
 ;
 ;
 ;   Build with MPLAB X v5.25 and XC8 compiler version 2.10
